@@ -1,0 +1,188 @@
+<html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thinksy</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: #fff;
+      animation: backgroundGlow 10s ease infinite;
+    }
+
+    @keyframes backgroundGlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      text-align: center;
+      padding: 3em 1em;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      box-shadow: 0 0 20px #ff6ec4;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      color: #fff;
+      text-shadow: 0 0 10px #fff;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      color: #f0f0f0;
+    }
+
+    .video-section {
+      padding: 3em 1em;
+      text-align: center;
+    }
+
+    .video-wrapper {
+      max-width: 800px;
+      margin: 0 auto;
+      border: 4px solid #fff;
+      box-shadow: 0 0 20px #00fff7;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 450px;
+    }
+
+    .idea-generator {
+      padding: 3em 1em;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 0 20px #f093fb;
+      border-radius: 20px;
+      margin: 2em auto;
+      max-width: 600px;
+    }
+
+    .idea-generator h2 {
+      margin-bottom: 1em;
+      color: #ffb6ff;
+    }
+
+    button {
+      background: linear-gradient(90deg, #ff6ec4, #7873f5);
+      color: white;
+      border: none;
+      padding: 1em 2em;
+      font-size: 1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff6ec4;
+      transition: transform 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #fff;
+    }
+
+    #idea {
+      margin-top: 1.5em;
+      font-size: 1.2rem;
+      color: #fff;
+      text-shadow: 0 0 5px #00fff7;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2em;
+      background-color: rgba(0, 0, 0, 0.5);
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Thinksy</h1>
+    <p>Вдохновляйся. Учись. Твори.</p>
+  </header>
+
+  <main>
+    <section class="video-section">
+      <h2>Учись с китайцами)</h2>
+      <div class="video-wrapper">
+        <iframe src="https://www.youtube.com/embed/Uoe4gmihCaA?si=3OHC-Uu8eUn49c4G">title="Обучающее видео" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </section>
+
+    <section class="idea-generator">
+      <h2>Нужна идея для рисунка?</h2>
+      <button onclick="generateIdea()">Сгенерировать идею</button>
+      <p id="idea"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Thinksy. Вдохновение всегда рядом.</p>
+  </footer>
+
+  <script>
+    const ideas = [
+      "Нарисуй космическую лису",
+      "Изобрази сон в цвете",
+      "Нарисуй город будущего",
+      "Изобрази эмоцию как пейзаж",
+      "Нарисуй страну в стиле человека",
+  "Нарисуй космическую лису",
+  "Изобрази сон в цвете",
+  "Нарисуй город будущего",
+  "Изобрази эмоцию как пейзаж",
+  "Нарисуй танцующую планету",
+  "Создай существо из своих страхов",
+  "Изобрази тишину",
+  "Нарисуй музыку",
+  "Портрет без лица",
+  "Глаза вселенной",
+  "Нарисуй свет сквозь тьму",
+  "Дерево из снов",
+  "Город под водой",
+  "Портал в другой мир",
+  "Животное из 4 разных животных",
+  "Цветок, который поёт",
+  "Комната твоей души",
+  "Нарисуй своё внутреннее 'я'",
+  "Один день на другой планете",
+  "Невидимая дружба",
+  "Солнечный дождь",
+  "Поток вдохновения",
+  "Зеркало, которое показывает мечты",
+  "Глаз, в котором мир",
+  "Рисунок без линий",
+  "Создание, сделанное из огня и воды",
+  "Механическое дерево",
+  "Дом на облаках",
+  "Нарисуй запах",
+  "Падающая звезда среди людей",
+  "Человек из света",
+  "Нарисуй время",
+  "Внутри компьютера",
+  "Мир из конфет",
+  "Сон машины",
+  "Разговор с Луной",
+  "Сказка в одном кадре",
+  "Танец света и тени",
+  "Пустота, полная жизни"
+    ];
+
+    function generateIdea() {
+      const randomIndex = Math.floor(Math.random() * ideas.length);
+      document.getElementById("idea").textContent = ideas[randomIndex];
+    }
+  </script>
+</body>
+</html>
